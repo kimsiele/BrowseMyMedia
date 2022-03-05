@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/actionSearchForlders"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="@string/menu_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/actionSortFolders"
+        android:title="@string/menu_sort" />
+    <item
+        android:id="@+id/actionOpenCamera"
+        android:title="@string/menu_open_camera" />
+
+</menu>

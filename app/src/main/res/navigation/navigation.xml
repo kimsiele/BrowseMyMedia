@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/listPhotosFolder">
+
+    <fragment
+        android:id="@+id/listPhotosFolder"
+        android:name="com.sielee.browsemymedia.ui.ListPhotosFolder"
+        android:label="Gallery"
+        tools:layout="@layout/fragment_list_photos_folder" >
+        <action
+            android:id="@+id/action_listPhotosFolder_to_listPhotos"
+            app:destination="@id/listPhotos" >
+            <argument
+            android:name="folder"
+            app:argType="com.sielee.browsemymedia.data.model.FolderModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/listPhotos"
+        android:name="com.sielee.browsemymedia.ui.ListPhotos"
+        android:label="Folder Name"
+        tools:layout="@layout/fragment_list_photos" >
+        <action
+            android:id="@+id/action_listPhotos_to_photoDetails"
+            app:destination="@id/photoDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoDetails"
+        android:name="com.sielee.browsemymedia.ui.PhotoDetails"
+        android:label="Photo Name"
+        tools:layout="@layout/fragment_photo_details" >
+        <action
+            android:id="@+id/action_photoDetails_to_editPhoto"
+            app:destination="@id/editPhoto" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPhoto"
+        android:name="com.sielee.browsemymedia.ui.EditPhoto"
+        android:label="Editor"
+        tools:layout="@layout/fragment_edit_photo" />
+</navigation>

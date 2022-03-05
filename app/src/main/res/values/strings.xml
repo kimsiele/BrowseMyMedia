@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">BrowseMyMedia</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="iv_content_des_photo_item">photo item</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_sort">Sort by</string>
+    <string name="menu_open_camera">Open camera</string>
+    <string name="menu_stop_hidden">Stop showing hidden</string>
+    <string name="menu_show_hidden">show hidden</string>
+    <string name="item_share">Share</string>
+    <string name="item_delete">Delete</string>
+    <string name="item_edit">Edit</string>
+    <string name="item_copy_label">Copy</string>
+    <string name="item_rename_label">Rename</string>
+    <string name="item_useas_label">Use as</string>
+    <string name="item_properties_label">Properties</string>
+    <string name="item_done_label">Done</string>
+</resources>
