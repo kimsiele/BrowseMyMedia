@@ -1,7 +1,6 @@
 package com.sielee.browsemymedia.ui
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.*
@@ -18,8 +17,6 @@ import com.sielee.browsemymedia.adapters.FoldersAdapter
 import com.sielee.browsemymedia.databinding.FragmentListPhotosFolderBinding
 import com.sielee.browsemymedia.viewmodels.FoldersViewModel
 import com.sielee.browsemymedia.viewmodels.FoldersViewModelFactory
-import java.security.Permission
-import java.util.jar.Manifest
 
 const val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1
 class ListPhotosFolder : Fragment() {
@@ -33,11 +30,23 @@ class ListPhotosFolder : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentListPhotosFolderBinding.inflate(inflater)
-        folderAdapter = FoldersAdapter(itemClick,requireContext())
+        setHasOptionsMenu(true)
+        folderAdapter = FoldersAdapter(
+            FoldersAdapter.OnItemClick { folderModel ->
+                findNavController()
+                    .navigate(
+                        ListPhotosFolderDirections.actionListPhotosFolderToListPhotos(
+                            folderModel
+                        )
+                    )
+            },
+            requireContext()
+        )
+
         askPermission()
 
         val viewModelFactory = FoldersViewModelFactory(requireContext())
-        viewModel = ViewModelProvider(this, viewModelFactory)[FoldersViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity(), viewModelFactory)[FoldersViewModel::class.java]
         gridLayoutManager = GridLayoutManager(requireContext(), 3)
 
         binding.apply {
@@ -50,10 +59,6 @@ class ListPhotosFolder : Fragment() {
         return binding.root
     }
 
-    val itemClick = FoldersAdapter.OnItemClick{ folderModel ->
-    findNavController().navigate(ListPhotosFolderDirections.actionListPhotosFolderToListPhotos(
-    ))
-    }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.main_menu, menu)
@@ -76,34 +81,37 @@ class ListPhotosFolder : Fragment() {
             else -> false
         }
     }
-    private fun askPermission(){
-        if(ContextCompat.checkSelfPermission(
-            requireContext(),
-            READ_EXTERNAL_STORAGE
-        )!=PackageManager.PERMISSION_GRANTED){
-           if ( ActivityCompat.shouldShowRequestPermissionRationale(
-                   requireActivity(),
-               READ_EXTERNAL_STORAGE)) {
-               AlertDialog.Builder(requireContext())
-                   .setTitle("Permission Required")
-                   .setMessage("Permission required to access photos")
-                   .setPositiveButton("Allow"){ _, _ ->
-                       ActivityCompat.requestPermissions(
-                           requireActivity(),
-                           arrayOf(READ_EXTERNAL_STORAGE),
-                           MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
-                       )
-                       activity?.onBackPressed()
-                   }
-                   .setNegativeButton("Deny"){ dialog, _ -> dialog.cancel()}
-                   .show()
-            }
-            else{
-               ActivityCompat.requestPermissions(
-                   requireActivity(),
-                   arrayOf(READ_EXTERNAL_STORAGE),
-                   MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
-               )
+
+    private fun askPermission() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    requireActivity(),
+                    READ_EXTERNAL_STORAGE
+                )
+            ) {
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Permission Required")
+                    .setMessage("Permission required to access photos")
+                    .setPositiveButton("Allow") { _, _ ->
+                        ActivityCompat.requestPermissions(
+                            requireActivity(),
+                            arrayOf(READ_EXTERNAL_STORAGE),
+                            MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
+                        )
+                        activity?.onBackPressed()
+                    }
+                    .setNegativeButton("Deny") { dialog, _ -> dialog.cancel() }
+                    .show()
+            } else {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    arrayOf(READ_EXTERNAL_STORAGE),
+                    MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
+                )
             }
         }
 

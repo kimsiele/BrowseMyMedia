@@ -12,11 +12,12 @@
             android:id="@+id/ivFolderItem"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
             android:contentDescription="@string/iv_content_des_photo_item"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
