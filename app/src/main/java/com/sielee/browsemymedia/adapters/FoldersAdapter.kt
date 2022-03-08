@@ -34,13 +34,12 @@ class FoldersAdapter(private val clickListener:OnItemClick,private val context: 
                 Glide
                     .with(context)
                     .load(folderModel?.photoFirst)
-                    .apply(RequestOptions().centerInside())
                     .into(ivFolderItem)
                 tvFolderName.text = folderModel?.folderName
                 tvPhotosCount.text = folderModel?.photosCount.toString()
 
                 root.setOnClickListener {
-                    itemClick.clickListener
+                    itemClick.onClick(folderModel!!)
                 }
             }
         }

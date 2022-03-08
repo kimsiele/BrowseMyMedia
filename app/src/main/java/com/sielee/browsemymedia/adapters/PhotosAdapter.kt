@@ -1,5 +1,6 @@
 package com.sielee.browsemymedia.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,12 +10,22 @@ import com.bumptech.glide.Glide
 import com.sielee.browsemymedia.data.model.PhotoModel
 import com.sielee.browsemymedia.databinding.PhotoItemBinding
 
-class PhotosAdapter:ListAdapter<PhotoModel,PhotosAdapter.PhotosViewHolder>(DiffUtilItemCallback()) {
+class PhotosAdapter(private val photoListener:PhotoClickListener, private val context: Context):ListAdapter<PhotoModel,PhotosAdapter.PhotosViewHolder>(DiffUtilItemCallback()) {
     class PhotosViewHolder(private val binding: PhotoItemBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(photoModel: PhotoModel?) {
-            Glide.with(binding.root.context).load(photoModel?.path).into(binding.ivPhotoItem)
+        fun bind(photoModel: PhotoModel?,photoClickListener: PhotoClickListener,position: Int,context:Context) {
+            binding.apply {
+                Glide.with(context).load(photoModel?.path).into(ivPhotoItem)
+                root.setOnClickListener {
+                    photoClickListener.onClick(photoModel!!,position)
+                }
+            }
+
         }
 
+    }
+
+    class PhotoClickListener(val clickListener:(photoModel: PhotoModel,position:Int)->Unit) {
+        fun onClick(photoModel: PhotoModel, position: Int) = clickListener(photoModel, position)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
@@ -23,7 +34,7 @@ class PhotosAdapter:ListAdapter<PhotoModel,PhotosAdapter.PhotosViewHolder>(DiffU
     }
 
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position),photoListener,position,context)
     }
 }
 

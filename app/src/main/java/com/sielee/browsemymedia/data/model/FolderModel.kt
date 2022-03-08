@@ -9,4 +9,6 @@ data class FolderModel(
     var folderName:String?="",
     var photoFirst: String?="",
     var photosCount:Int=0
-):Parcelable
+):Parcelable {
+    fun addPhotos() = this.photosCount++
+}
