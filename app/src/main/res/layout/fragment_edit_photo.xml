@@ -6,14 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".ui.EditPhoto">
 
-
-    <ImageView
-        android:id="@+id/ivEdit"
-        android:layout_width="429dp"
-        android:layout_height="475dp"
-        android:scaleType="centerCrop"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerTabs"
+        android:layout_width="0dp"
+        android:layout_height="450dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutEdits"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/gradient_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabIconTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/viewPagerTabs"
+        app:tabIndicator="@android:color/transparent">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:icon="@drawable/ic_add_filter" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_crop_rotate" />
+    </com.google.android.material.tabs.TabLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
