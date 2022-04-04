@@ -10,7 +10,7 @@ import com.sielee.browsemymedia.data.model.PhotoModel
 import com.sielee.browsemymedia.databinding.ItemViewpagerLayoutBinding
 
 class PhotoPagerAdapter(
-    private val photos: Array<PhotoModel>,
+     private val photos: Array<PhotoModel>,
     private val clickedItemListener: ClickedItemListener,
     private val context: Context
 ):RecyclerView.Adapter<PhotoPagerAdapter.PhotosViewHolder>() {
@@ -23,10 +23,14 @@ class PhotoPagerAdapter(
 
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
         val currentPhoto = photos[position]
-       holder.bind(currentPhoto,context, clickedItemListener)
+       holder.bind(currentPhoto, context, clickedItemListener)
     }
 
     override fun getItemCount(): Int = photos.size
+
+    override fun getItemId(position: Int): Long {
+        return photos[position].hashCode().toLong()
+    }
 
     class PhotosViewHolder(private val binding: ItemViewpagerLayoutBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(
@@ -34,11 +38,12 @@ class PhotoPagerAdapter(
             context: Context,
             clickedItemListener: ClickedItemListener
         ){
+
             Glide
                 .with(context)
                 .load(photoModel.path)
                 .apply(RequestOptions().fitCenter())
-                .into( binding.ivPhoto)
+                .into(binding.ivPhoto)
 
             binding.root.setOnClickListener {
                 clickedItemListener.onClick(photoModel)

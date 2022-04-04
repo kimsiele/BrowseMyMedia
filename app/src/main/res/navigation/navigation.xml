@@ -17,7 +17,6 @@
     <fragment
         android:id="@+id/listPhotos"
         android:name="com.sielee.browsemymedia.ui.ListPhotos"
-        android:label="Folder Name"
         tools:layout="@layout/fragment_list_photos" >
         <action
             android:id="@+id/action_listPhotos_to_photoDetails"
@@ -59,5 +58,44 @@
         <action
             android:id="@+id/action_editPhoto_to_photoDetails"
             app:destination="@id/photoDetails" />
+       <!-- <argument
+            android:name="photo"
+            app:argType="com.sielee.browsemymedia.data.model.PhotoModel"
+            app:nullable="true"
+            android:defaultValue="@null" />-->
+       <!-- <action
+            android:id="@+id/action_editPhoto_to_cropResizeFragment3"
+            app:destination="@id/nav_nested_graph" />
+        <action
+            android:id="@+id/action_editPhoto_to_filterFragment3"
+            app:destination="@id/nav_nested_graph" />-->
+        <argument
+            android:name="photo_to_edit"
+            app:argType="com.sielee.browsemymedia.data.model.PhotoModel" />
     </fragment>
+    <!--<navigation
+        android:id="@+id/nav_nested_graph"
+        app:startDestination="@id/cropResizeFragment3"></navigation>-->
+       <!-- <fragment
+            android:id="@+id/cropResizeFragment3"
+            android:name="com.sielee.browsemymedia.ui.CropResizeFragment"
+            android:label="fragment_crop_resize"
+            tools:layout="@layout/fragment_crop_resize" >
+            <argument
+                android:name="photo"
+                app:argType="com.sielee.browsemymedia.data.model.PhotoModel" />
+        </fragment>
+        <fragment
+            android:id="@+id/filterFragment3"
+            android:name="com.sielee.browsemymedia.ui.FilterFragment"
+            android:label="fragment_filter_frament"
+            tools:layout="@layout/fragment_filter_frament" >
+            <argument
+                android:name="photo_to_edit"
+                app:argType="com.sielee.browsemymedia.data.model.PhotoModel" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_editPhoto"
+            app:destination="@id/editPhoto" />-->
+
 </navigation>

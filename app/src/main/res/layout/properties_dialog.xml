@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvNameLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/propertyName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="name.gif"
+            app:layout_constraintEnd_toEndOf="@+id/tvNameLabel"
+            app:layout_constraintStart_toStartOf="@+id/tvNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameLabel" />
+
+        <TextView
+            android:id="@+id/tvLabelSize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Size"
+            app:layout_constraintEnd_toEndOf="@+id/propertyName"
+            app:layout_constraintStart_toStartOf="@+id/propertyName"
+            app:layout_constraintTop_toBottomOf="@+id/propertyName" />
+
+        <TextView
+            android:id="@+id/propertySize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="156.4kb"
+            app:layout_constraintEnd_toEndOf="@+id/tvLabelSize"
+            app:layout_constraintStart_toStartOf="@+id/tvLabelSize"
+            app:layout_constraintTop_toBottomOf="@+id/tvLabelSize" />
+
+        <TextView
+            android:id="@+id/tvLastModifiedLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Last Modified"
+            app:layout_constraintEnd_toEndOf="@+id/propertySize"
+            app:layout_constraintStart_toStartOf="@+id/propertySize"
+            app:layout_constraintTop_toBottomOf="@+id/propertySize" />
+
+        <TextView
+            android:id="@+id/propertyLastModified"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="21.01.2022 08:13"
+            app:layout_constraintEnd_toEndOf="@+id/tvLastModifiedLabel"
+            app:layout_constraintStart_toStartOf="@+id/tvLastModifiedLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvLastModifiedLabel" />
+
+        <TextView
+            android:id="@+id/tvPathLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Path"
+            app:layout_constraintEnd_toEndOf="@+id/propertyLastModified"
+            app:layout_constraintStart_toStartOf="@+id/propertyLastModified"
+            app:layout_constraintTop_toBottomOf="@+id/propertyLastModified" />
+
+        <TextView
+            android:id="@+id/propertyPath"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="16dp"
+            android:text="/storage/emulated/0/Download"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvPathLabel"
+            app:layout_constraintStart_toStartOf="@+id/tvPathLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvPathLabel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/menu_search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="always"/>
+        app:showAsAction="always|collapseActionView"/>
     <item
         android:id="@+id/actionSortFolders"
         android:title="@string/menu_sort" />

@@ -8,5 +8,6 @@ data class PhotoModel (
     var name:String?="",
     var path:String?="",
     var size:String?="",
-    var last_modified:String?=""
+    var last_modified:String?="",
+    var id:Long = 0L
 ):Parcelable
